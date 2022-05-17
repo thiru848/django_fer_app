@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/faq.css' %}">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse" style="width:100%;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#"><img height="51" src="{% static 'img/logo.png' %}" alt="logo" id="logo"></a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li class="active"><a href="/faq">FAQ</a></li>
+        <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </div>
+  </nav><br>
+
+  <main class="faq">
+
+    <div class="faq__logo__holder">
+      <div class="faq__logo">
+        <img id="logo" src="https://bobmatyas.github.io/fm-faq-accordion/images/illustration-woman-online-mobile.svg"
+          alt="woman at a computer" class="faq__logo__image hidden-lg">
+      </div>
+    </div>
+
+    <div class="faq__holder">
+      <h1 class="faq__heading">FAQ</h1>
+
+      <details class="faq__detail">
+        <summary class="faq__summary"><span class="faq__question">Can you prevent mental health problems?</span>
+        </summary><br>
+        <p class="faq__text">By developing our well being, resilience & seeking help early can help to prevent
+          challenges becoming serious</p>
+      </details>
+
+      <details class="faq__detail">
+        <summary class="faq__summary"><span class="faq__question">How secure is patient data</span></summary>
+        <p class="faq__text">All data between Doctor & Patient are betweem them. With policies, we are strict to the
+          confidentiality </p>
+      </details>
+
+      <details class="faq__detail">
+        <summary class="faq__summary"><span class="faq__question">How do I reset my password?</span></summary>
+        <p class="faq__text">Click “Forgot password” from the login page enter the otp sent to your mail and enter the
+          new password.</p>
+        <p class="faq__text">A reset link will be emailed to you.</p>
+      </details>
+
+      <details class="faq__detail">
+        <summary class="faq__summary"><span class="faq__question">What are common problems people seek help?</span>
+        </summary><br>
+        <p class="faq__text">Majority are depression effects, stress, anxiety, problems with eating & weight,
+          relationship problems & addictions</p>
+      </details>
+
+      <details class="faq__detail">
+        <summary class="faq__summary"><span class="faq__question">Do you provide additional support?</span></summary>
+        <p class="faq__text">Chat bot from your dashboard and email support is available 24/7 service.</p>
+      </details>
+
+    </div>
+  </main><br><br>
+
+  <footer class="site-footer" style="color:#ffffff">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6 style="color:#ffffff"><b>About</b></h6>
+          <p class="text-justify" style="opacity: 0.7">The website mainly focuses on providing
+            better experience for users to know more about them and also helps doctor to get
+            feedback from the tool to provide any solution required, interaction & lot of fun activities.</p>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <h6 style="color:#ffffff">Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="/about" style="color:#ffffff;opacity: 0.7">About Us</a></li>
+            <li><a href="/faq" style="color:#ffffff;opacity: 0.7">FAQ</a></li>
+            <li><a href="/signup" style="color:#ffffff;opacity: 0.7">Sign Up</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <h6 style="color:#ffffff">Stakeholders</h6>
+          <ul class="footer-links">
+            <li style="color:#ffffff;opacity: 0.7">Patient</a></li>
+            <li style="color:#ffffff;opacity: 0.7">Doctor</a></li>
+            <li style="color:#ffffff;opacity: 0.7">Administrator</a></li>
+          </ul>
+        </div>
+      </div><br>
+      <p style="color:#ffffff;opacity: 0.9;">Contact via fyp.ml.fer@gmail.com</p>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by ASTS Ltd.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

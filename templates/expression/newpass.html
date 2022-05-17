@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>New Password</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/password.css' %}">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+    <script type="text/javascript">
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(1500);
+        });
+        $(document).ready(function () {
+            // show the alert
+            setTimeout(function () {
+                $(".alert").alert('close');
+            }, 3000);
+        });
+    </script>
+
+</head>
+
+<body>
+    {% include 'expression/includes/messages.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="page-content">
+        <div class="form-v5-content">
+            <form class="form-detail" action="/verify" method="POST">
+                {% csrf_token %}
+                <h2>New Password</h2>
+                <div class="form-row">
+                    <input type="password" name="pass1" id="pass1" class="input-text" placeholder="Enter New Password"
+                        required>
+                </div>
+                <input type="password" name="pass2" id="pass2" class="input-text" placeholder="Confirm Password"
+                    required>
+                <input type="hidden" value="{{ username }}" name="username">
+                <div class="form-row-last">
+                    <input type="submit" name="change" class="register" value="Proceed">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

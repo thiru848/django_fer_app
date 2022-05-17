@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="https://fonts.googleapis.com/css?family=Autowide">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body style="background: linear-gradient(to left, #51cc48, #39df9c); min-height: 100vh;">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="#"><img height="51" src="{% static 'img/logo.png' %}" alt="logo"></a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li class="active"><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		</div>
+	</nav>
+
+	<img src="{% static 'img/consult.png' %}" alt="Consult" width="55%" align="right">
+
+	<div align="left">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+				<li data-target="#myCarousel" data-slide-to="5"></li>
+				<li data-target="#myCarousel" data-slide-to="6"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="{% static 'img/01.png' %}" alt="1st">
+				</div>
+
+				<div class="item">
+					<img src="{% static 'img/02.png' %}" alt="2nd">
+				</div>
+
+				<div class="item">
+					<img src="{% static 'img/03.png' %}" alt="3rd">
+				</div>
+
+				<div class="item">
+					<img src="{% static 'img/04.png' %}" alt="4th">
+				</div>
+
+				<div class="item">
+					<img src="{% static 'img/05.png' %}" alt="5th">
+				</div>
+
+				<div class="item">
+					<img src="{% static 'img/06.png' %}" alt="6th">
+				</div>
+
+				<div class="item">
+					<img src="{% static 'img/07.png' %}" alt="7th">
+				</div>
+
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+	</div><br><br><br><br><br><br><br><br><br><br><br>
+	<div class="col-lg-3">
+		<div class="card" style="width: 25rem;background-color: white;padding: 21px; margin-left:16px">
+			<img class="card-img-top" src="{% static 'img/online.jpg' %}" alt="Card image cap" height="180px"
+				width="200px">
+			<div class="card-body">
+				<h3 class="card-title" style="font-weight: bold;">Online Consult</h3>
+				<p class="card-text">We have came up with a tool which monitors your emotion to find your mood without
+					doctor intervention</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div class="card" style="width: 25rem;background-color: white;padding: 21px;">
+			<img class="card-img-top" src="{% static 'img/service.jpg' %}" alt="Card image cap" height="180px"
+				width="200px">
+			<div class="card-body">
+				<h3 class="card-title" style="font-weight: bold;">24 / 7 Service</h3>
+				<p class="card-text">Made this service possible as with no human intervention to identify your emotion
+					expressed</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div class="card" style="width: 25rem;background-color: white;padding: 21px;">
+			<img class="card-img-top" src="{% static 'img/interact.jpg' %}" alt="Card image cap" height="180px"
+				width="200px">
+			<div class="card-body">
+				<h3 class="card-title" style="font-weight: bold;">Interactive</h3>
+				<p class="card-text">We are not just detecting emotions seen alone in the session, we use our chat bot
+					for better interaction</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div class="card" style="width: 25rem;background-color: white;padding: 21px;">
+			<img class="card-img-top" src="{% static 'img/controller.jpg' %}" alt="Card image cap" height="180px"
+				width="200px">
+			<div class="card-body">
+				<h3 class="card-title" style="font-weight: bold;">Upcoming</h3>
+				<p class="card-text">We are about to bring some interactive mind game plays for the better understanding
+					of yourself</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+	<footer class="site-footer" style="color:#ffffff">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<h6 style="color:#ffffff"><b>About</b></h6>
+					<p class="text-justify" style="opacity: 0.7">The website mainly focuses on providing
+						better experience for users to know more about them and also helps doctor to get
+						feedback from the tool to provide any solution required, interaction & lot of fun activities.
+					</p>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<h6 style="color:#ffffff">Quick Links</h6>
+					<ul class="footer-links">
+						<li><a href="/about" style="color:#ffffff;opacity: 0.7">About Us</a></li>
+						<li><a href="/faq" style="color:#ffffff;opacity: 0.7">FAQ</a></li>
+						<li><a href="/signup" style="color:#ffffff;opacity: 0.7">Sign Up</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<h6 style="color:#ffffff">Stakeholders</h6>
+					<ul class="footer-links">
+						<li style="color:#ffffff;opacity: 0.7">Patient</li>
+						<li style="color:#ffffff;opacity: 0.7">Doctor</li>
+						<li style="color:#ffffff;opacity: 0.7">Administrator</li>
+					</ul>
+				</div>
+			</div><br>
+			<p style="color:#ffffff;opacity: 0.9;">Contact via fyp.ml.fer@gmail.com</p>
+			<hr>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-6 col-xs-12">
+
+					<p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by ASTS Ltd.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

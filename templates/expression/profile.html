@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel='stylesheet' type='text/css' href="{% static 'css/profile.css' %}">
+    <script type="text/javascript">
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(1500);
+        });
+        $(document).ready(function () {
+            // show the alert
+            setTimeout(function () {
+                $(".alert").alert('close');
+            }, 3000);
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#"><img height="51" src="{% static 'img/logo.png' %}" alt="logo"></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/dashboard">Dashboard</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                <li class="active"><a href="/signout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </div>
+    </nav>
+
+    {% include 'expression/includes/messages.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <form class="form-detail" action="">
+                {% csrf_token %}
+                <h2>My Profile</h2><br>
+
+                <div>
+                    <i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="fname"><strong>Name</strong></label><br>
+                    <input type="text" name="fname" id="fname" class="input-text" value="{{ fname }} {{ lname }}"
+                        readonly>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-calendar-check-o" style="font-size:1.2em;"></i>&nbsp;
+                    <label for="age"><strong>Age</strong></label><br>
+                    <input type="text" name="age" id="age" class="input-text" value="{{ age }}" readonly>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-phone" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="phone"><strong>Phone Number</strong></label><br>
+                    <input type="text" name="phone" id="phone" class="input-text" value="{{ phone }}" readonly>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-envelope" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="email"><strong>Mail ID</strong></label><br>
+                    <input type="email" min="1" name="email" id="email" class="input-text" value="{{ email }}" readonly>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-user-circle" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="username"><strong>User name</strong></label><br>
+                    <input type="text" name="username" id="username" class="input-text" value="{{ user_name }}"
+                        readonly>
+                </div><br>
+            </form>
+            <button onclick='location.href="/reset"'>Reset Password</button>
+            <button onclick='location.href="download"'>Check</button>
+        </div>
+    </div>
+</body>
+
+</html>

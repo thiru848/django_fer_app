@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>About</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Dancing+Script&family=Shadows+Into+Light&family=Patrick+Hand&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+
+<body style="background: linear-gradient(to right, #B5AC49, #3CA55C);">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#"><img height="51" src="{% static 'img/logo.png' %}" alt="logo"></a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home</a></li>
+        <li class="active"><a href="/about">About Us</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </div>
+  </nav>
+  <img src="{% static 'img/back.png' %}"
+    style="display: block; margin-left: auto; margin-right: auto; width: 100%;height:280px;padding-top:0px;padding-bottom:10px;">
+  <button class="button button5">ABOUT</button>
+  <h1 style="text-align: center;font-weight: bold;font-family:'Shadows Into Light';">"Knowledge opens up
+    different
+    dimension of opportunities"</h1>
+  <br>
+  <br>
+  <p style="text-align: center;font-weight: lighter;font-family: 'Crimson Text';font-size: 25px;"> The
+    website mainly focuses on providing the better exprience for users to know about them better.<br>
+    It is a on going development of tool, trying to make better predictions through lots of various cases.<br>
+    The main feature of the product is identify the gender & emotions based Facial Expression Recognition,<br>
+    then chat bot interaction & music recommendation based on the mood.<br> This website provides an interface
+    to view and download report generated after the session & <br>doctor consultation which is best designed to the
+    <br>model used in our website. We are open to the suggestions that the users request on us.
+
+    <br><br>
+    The User classes that we have are Patient and Doctor.<br> Anyone who created account as patient interact
+    with the system through chat bot & sessions.<br> Through those monitoring we are able to identify the
+    behaviour of person based on some given scenario <br> which will be added based on the data generated
+    from all the modules. Report generated is directed to doctor <br> to give some ideas or any solution
+    required by user.<br> Users can also manage their profile information if they find it to be false after signup.
+  </p>
+  </div><br>
+  <footer class="site-footer" style="color:#ffffff">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6 style="color:#ffffff"><b>About</b></h6>
+          <p class="text-justify" style="opacity: 0.7">The website mainly focuses on providing
+            better experience for users to know more about them and also helps doctor to get
+            feedback from the tool to provide any solution required, interaction & lot of fun activities.</p>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <h6 style="color:#ffffff">Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="/about" style="color:#ffffff;opacity: 0.7">About Us</a></li>
+            <li><a href="/faq" style="color:#ffffff;opacity: 0.7">FAQ</a></li>
+            <li><a href="/signup" style="color:#ffffff;opacity: 0.7">Sign Up</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <h6 style="color:#ffffff">Stakeholders</h6>
+          <ul class="footer-links">
+            <li style="color:#ffffff;opacity: 0.7">Patient</li>
+            <li style="color:#ffffff;opacity: 0.7">Doctor</li>
+            <li style="color:#ffffff;opacity: 0.7">Administrator</li>
+          </ul>
+        </div>
+      </div><br>
+      <p style="color:#ffffff;opacity: 0.9;">Contact via fyp.ml.fer@gmail.com</p>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by ASTS Ltd.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

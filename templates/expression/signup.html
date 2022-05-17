@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Signup</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/signup.css' %}">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+			<form class="form-detail" action="/signup" method="POST">
+				{% csrf_token %}
+				<h2>Sign Up</h2><br>
+				<div>
+					<i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="fname"><strong>First Name <b>*</b></strong></label><br>
+					<input type="text" name="fname" id="fname" class="input-text" placeholder="Enter first Name"
+						pattern="[A-Za-z]+" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="lname"><strong>Last Name</strong></label><br>
+					<input type="text" name="lname" id="lname" class="input-text" placeholder="Enter last name"
+						pattern="[A-Za-z]+">
+				</div><br>
+
+				<div>
+					<i class="fa fa-user-circle" style="font-size: 1.2em;"></i>&nbsp;
+					<strong>User Type <b>*</b></strong><br>
+					<label class="radio-inline">
+						<input type="radio" name="utype" id="type"
+							value="Patient"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Patient</strong></label>
+					<label class="radio-inline">
+						<input type="radio" name="utype" id="type"
+							value="Doctor"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Doctor</strong></label>
+				</div><br>
+
+				<div>
+					<i class="fa fa-calendar" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="dob"><strong>Date of Birth <b>*</b></strong></label><br>
+					<input type="date" name="dob" id="dob" class="input-text" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-phone" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="phone"><strong>Phone Number <b>*</b></strong></label><br>
+					<input type="text" name="phone" id="phone" pattern="[6789][0-9]{9}" class="input-text"
+						placeholder="Enter phone number" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-envelope" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="email"><strong>Mail ID <b>*</b></strong></label><br>
+					<input type="email" min="1" name="email" id="email" class="input-text" placeholder="Enter mail ID"
+						required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-user-circle" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="username"><strong>User name <b>*</b></strong></label><br>
+					<input type="text" name="username" id="username" class="input-text" placeholder="Username" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-lock" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="password"><strong>Password <b>*</b></strong></label><br>
+					<input type="password" name="pass1" id="pass" class="input-text" placeholder="Enter Password"
+						pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-lock" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="password1"><strong>Confirm Password <b>*</b></strong></label><br>
+					<input type="password" name="pass2" id="pass2" class="input-text" placeholder="Confirm Password"
+						pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" required>
+				</div><br>
+
+				<button type="submit">Register</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
