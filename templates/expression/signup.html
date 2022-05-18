@@ -11,15 +11,31 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 	<link rel='stylesheet' type='text/css' href="{% static 'css/signup.css' %}">
+	<script type="text/javascript">
+		$(".alert").fadeTo(2000, 500).slideUp(500, function () {
+			$(".alert").slideUp(1500);
+		});
+		$(document).ready(function () {
+			// show the alert
+			setTimeout(function () {
+				$(".alert").alert('close');
+			}, 3000);
+		});
+	</script>
 </head>
 
 <body>
+	{% include 'expression/includes/messages.html' %}
+
+	{% block content %}
+
+	{% endblock %}
 
 	<div class="container">
 		<div class="jumbotron">
 			<form class="form-detail" action="/signup" method="POST">
 				{% csrf_token %}
-				<h2>Sign Up</h2><br>
+				<h2>New Patient Registration</h2><br>
 				<div>
 					<i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
 					<label for="fname"><strong>First Name <b>*</b></strong></label><br>
@@ -35,20 +51,24 @@
 				</div><br>
 
 				<div>
-					<i class="fa fa-user-circle" style="font-size: 1.2em;"></i>&nbsp;
-					<strong>User Type <b>*</b></strong><br>
-					<label class="radio-inline">
-						<input type="radio" name="utype" id="type"
-							value="Patient"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Patient</strong></label>
-					<label class="radio-inline">
-						<input type="radio" name="utype" id="type"
-							value="Doctor"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Doctor</strong></label>
-				</div><br>
-
-				<div>
 					<i class="fa fa-calendar" style="font-size: 1.2em;"></i>&nbsp;
 					<label for="dob"><strong>Date of Birth <b>*</b></strong></label><br>
 					<input type="date" name="dob" id="dob" class="input-text" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-h-square" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="group"><strong>Blood Group <b>*</b></strong></label><br>
+					<select name="group" id="group" class="input-text" required>
+						<option>O+</option>
+						<option>A+</option>
+						<option>B+</option>
+						<option>AB+</option>
+						<option>O-</option>
+						<option>A-</option>
+						<option>B-</option>
+						<option>AB-</option>
+					</select>
 				</div><br>
 
 				<div>
@@ -56,6 +76,30 @@
 					<label for="phone"><strong>Phone Number <b>*</b></strong></label><br>
 					<input type="text" name="phone" id="phone" pattern="[6789][0-9]{9}" class="input-text"
 						placeholder="Enter phone number" required>
+				</div><br>
+
+				<div>
+					<i class="fa fa-address-book" style="font-size: 1.2em;"></i>&nbsp;
+					<label for="address"><strong>Address <b>*</b></strong></label><br>
+					<textarea name="address" id="address" class="input-text" placeholder="Enter your address" rows="3"
+						cols="50" required></textarea>
+				</div><br>
+
+				<div>
+					<label for="city"><strong>City <b>*</b></strong></label><br>
+					<input type="text" name="city" id="city" class="input-text" placeholder="Enter City name" required>
+				</div><br>
+
+				<div>
+					<label for="state"><strong>State <b>*</b></strong></label><br>
+					<input type="text" name="state" id="state" class="input-text" placeholder="Enter your state"
+						required>
+				</div><br>
+
+				<div>
+					<label for="pincode"><strong>Pincode <b>*</b></strong></label><br>
+					<input type="text" name="pincode" id="pincode" class="input-text" pattern="[0-9]{6}"
+						placeholder="Enter your pincode" required>
 				</div><br>
 
 				<div>

@@ -34,6 +34,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=10)
     otp = models.IntegerField(null=True, blank=True)
     dob = models.DateField(null=True, blank=True)
+    group = models.CharField(max_length=5)
+    address = models.CharField(max_length=150)
+    city = models.CharField(max_length=25)
+    state = models.CharField(max_length=25)
+    pincode = models.CharField(max_length=6)
     last_login = models.DateTimeField(null=True, blank=True, help_text='Last login time of this account', verbose_name='Last Login')
     date_joined = models.DateTimeField(default=django.utils.timezone.now, help_text='Time at Creation of this account', verbose_name='Date Joined') 
 

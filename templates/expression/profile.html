@@ -7,9 +7,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel='stylesheet' type='text/css' href="{% static 'css/demo.css' %}">
     <link rel='stylesheet' type='text/css' href="{% static 'css/profile.css' %}">
     <script type="text/javascript">
         $(".alert").fadeTo(2000, 500).slideUp(500, function () {
@@ -25,66 +29,93 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-expand-sm py-0">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="#"><img height="51" src="{% static 'img/logo.png' %}" alt="logo"></a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right ml-auto">
                 <li class="active"><a href="/dashboard">Dashboard</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                 <li class="active"><a href="/signout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </div>
     </nav>
 
-    {% include 'expression/includes/messages.html' %}
+    <div style="font-size: 14px; line-height: 1.42857143; font-family: Arial;">
+        {% include 'expression/includes/messages.html' %}
 
-    {% block content %}
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
+    </div>
 
-    <div class="container">
-        <div class="jumbotron">
-            <form class="form-detail" action="">
-                {% csrf_token %}
-                <h2>My Profile</h2><br>
-
-                <div>
-                    <i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
-                    <label for="fname"><strong>Name</strong></label><br>
-                    <input type="text" name="fname" id="fname" class="input-text" value="{{ fname }} {{ lname }}"
-                        readonly>
-                </div><br>
-
-                <div>
-                    <i class="fa fa-calendar-check-o" style="font-size:1.2em;"></i>&nbsp;
-                    <label for="age"><strong>Age</strong></label><br>
-                    <input type="text" name="age" id="age" class="input-text" value="{{ age }}" readonly>
-                </div><br>
-
-                <div>
-                    <i class="fa fa-phone" style="font-size: 1.2em;"></i>&nbsp;
-                    <label for="phone"><strong>Phone Number</strong></label><br>
-                    <input type="text" name="phone" id="phone" class="input-text" value="{{ phone }}" readonly>
-                </div><br>
-
-                <div>
-                    <i class="fa fa-envelope" style="font-size: 1.2em;"></i>&nbsp;
-                    <label for="email"><strong>Mail ID</strong></label><br>
-                    <input type="email" min="1" name="email" id="email" class="input-text" value="{{ email }}" readonly>
-                </div><br>
-
-                <div>
-                    <i class="fa fa-user-circle" style="font-size: 1.2em;"></i>&nbsp;
-                    <label for="username"><strong>User name</strong></label><br>
-                    <input type="text" name="username" id="username" class="input-text" value="{{ user_name }}"
-                        readonly>
-                </div><br>
-            </form>
-            <button onclick='location.href="/reset"'>Reset Password</button>
-            <button onclick='location.href="download"'>Check</button>
+    <div class="student-profile py-4">
+        <div class="container1">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent text-center">
+                            <img class="profile_img" src="https://source.unsplash.com/600x300/?student"
+                                alt="student dp">
+                            <h3>Ashirvad Hospital</h3>
+                            <p class="mb-0"><strong class="pr-1">Address:</strong>4-120/A, North Bypass Road, NH-5,
+                                Mukthinuthalapadu (V), Ongole - 523001, Andhra Pradesh, India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>My Information</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th width="30%">Patient Username</th>
+                                    <td>{{ uname }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Patient Name</th>
+                                    <td>{{ name }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Age</th>
+                                    <td>{{ age }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Blood Group</th>
+                                    <td>{{ group }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Address</th>
+                                    <td>{{ address }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">City</th>
+                                    <td>{{ city }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">State</th>
+                                    <td>{{ state }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Pin code</th>
+                                    <td>{{ pincode }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="30%">Mobile Number</th>
+                                    <td>{{ phone }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</body>
+    <div style="margin-left:30%">
+        <button onclick='location.href="/reset"'>Reset Password</button>
+        <button onclick='location.href="/update"' style="margin-left:8%">Update Profile</button>
+    </div>
 
 </html>

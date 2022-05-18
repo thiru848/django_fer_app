@@ -18,4 +18,5 @@ urlpatterns = [
     path('reset', views.reset, name='reset'),
     path('music', views.music, name='music'),
     path('report', views.report, name='report'),
+    path('update', views.update, name='update'),
 ]

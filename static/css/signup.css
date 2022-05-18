@@ -1,5 +1,5 @@
 body {
-  height: 1200px;
+  height: 1720px;
   background: linear-gradient(to top left, #33ccff, #ff99cc);
   margin: 0;
 }
@@ -7,12 +7,11 @@ body {
 .container {
   height: 100%;
   align-content: center;
-
 }
 
 .jumbotron {
   background-color: white;
-  height: 1100px;
+  height: 1620px;
   margin-top: 50px;
   margin-bottom: auto;
   width: 60%;
@@ -21,11 +20,13 @@ body {
 
 h2 {
   font-weight: bold;
-  margin-left: 28%;
+  margin-left: 12%;
   margin-top: -2%;
 }
 
-input {
+input,
+textarea,
+select {
   background-color: #eee;
   border: none;
   padding: 12px 15px;
@@ -52,7 +53,7 @@ button {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
-  margin-left: 18%;
+  margin-left: 22%;
 }
 
 button:active {

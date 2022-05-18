@@ -7,7 +7,8 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('user_name',)
     list_display = (
         'user_name', 'email', 'first_name', 'last_name', 'is_staff',
-        'is_doctor', 'dob', 'phone', 'otp'
+        'is_doctor', 'group', 'dob', 'address', 'city', 'state', 
+        'pincode', 'phone', 'otp',
         )
 
     fieldsets = (
@@ -27,7 +28,8 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('last_login', 'date_joined')
         }),
         ('Additional info', {
-            'fields': ('is_doctor', 'dob', 'phone', 'otp')
+            'fields': ('is_doctor', 'group', 'dob', 'address',
+                        'city', 'state', 'pincode', 'phone', 'otp')
         })
     )
 
@@ -48,7 +50,8 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('last_login', 'date_joined')
         }),
         ('Additional info', {
-            'fields': ('is_doctor', 'dob', 'phone', 'otp')
+            'fields': ('is_doctor', 'group', 'dob', 'address',
+                        'city', 'state', 'pincode', 'phone', 'otp')
         })
     )
 

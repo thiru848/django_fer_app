@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Update</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' type='text/css' href="{% static 'css/update.css' %}">
+    <script type="text/javascript">
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(1500);
+        });
+        $(document).ready(function () {
+            // show the alert
+            setTimeout(function () {
+                $(".alert").alert('close');
+            }, 3000);
+        });
+    </script>
+</head>
+
+<body>
+    {% include 'expression/includes/messages.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <form class="form-detail" action="/update" method="POST">
+                {% csrf_token %}
+                <h2>Update My Profile</h2><br>
+
+                <div>
+                    <i class="fa fa-user-circle" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="username"><strong>User name <b>*</b></strong></label><br>
+                    <input type="text" name="username" id="username" class="input-text" value="{{ uname }}"
+                        placeholder="Username" required>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-envelope" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="email"><strong>Mail ID <b>*</b></strong></label><br>
+                    <input type="email" min="1" name="email" id="email" class="input-text" value="{{ email }}"
+                        placeholder="Enter mail ID" required>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="fname"><strong>First Name <b>*</b></strong></label><br>
+                    <input type="text" name="fname" id="fname" class="input-text" value="{{ fname }}"
+                        placeholder="Enter first Name" pattern="[A-Za-z]+" required>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-user" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="lname"><strong>Last Name</strong></label><br>
+                    <input type="text" name="lname" id="lname" class="input-text" value="{{ lname }}"
+                        placeholder="Enter last name" pattern="[A-Za-z]+">
+                </div><br>
+
+                <div>
+                    <i class="fa fa-calendar" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="dob"><strong>Date of Birth <b>*</b></strong></label><br>
+                    <input type="date" name="dob" id="dob" class="input-text" value="{{ dob|date:'Y-m-d' }}" required>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-h-square" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="group"><strong>Blood Group <b>*</b></strong></label><br>
+                    <select name="group" id="group" class="input-text" required>
+                        {%if group == "O+"%}
+                        <option selected>O+</option>
+                        {% else %}
+                        <option>O+</option>
+                        {% endif %}
+                        {%if group == "A+"%}
+                        <option selected>A+</option>
+                        {% else %}
+                        <option>A+</option>
+                        {% endif %}
+                        {%if group == "B+"%}
+                        <option selected>B+</option>
+                        {% else %}
+                        <option>B+</option>
+                        {% endif %}
+                        {%if group == "AB+"%}
+                        <option selected>AB+</option>
+                        {% else %}
+                        <option>AB+</option>
+                        {% endif %}
+                        {%if group == "O-"%}
+                        <option selected>O-</option>
+                        {% else %}
+                        <option>O-</option>
+                        {% endif %}
+                        {%if group == "A-"%}
+                        <option selected>A-</option>
+                        {% else %}
+                        <option>A-</option>
+                        {% endif %}
+                        {%if group == "B-"%}
+                        <option selected>B-</option>
+                        {% else %}
+                        <option>B-</option>
+                        {% endif %}
+                        {%if group == "AB-"%}
+                        <option selected>AB-</option>
+                        {% else %}
+                        <option>AB-</option>
+                        {% endif %}
+                    </select>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-phone" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="phone"><strong>Phone Number <b>*</b></strong></label><br>
+                    <input type="text" name="phone" id="phone" pattern="[6789][0-9]{9}" class="input-text"
+                        value="{{ phone }}" placeholder="Enter phone number" required>
+                </div><br>
+
+                <div>
+                    <i class="fa fa-address-book" style="font-size: 1.2em;"></i>&nbsp;
+                    <label for="address"><strong>Address <b>*</b></strong></label><br>
+                    <textarea name="address" id="address" class="input-text" placeholder="Enter your address" rows="3"
+                        cols="50" required>{{ address }}</textarea>
+                </div><br>
+
+                <div>
+                    <label for="city"><strong>City <b>*</b></strong></label><br>
+                    <input type="text" name="city" id="city" class="input-text" value="{{ city }}"
+                        placeholder="Enter City name" required>
+                </div><br>
+
+                <div>
+                    <label for="state"><strong>State <b>*</b></strong></label><br>
+                    <input type="text" name="state" id="state" class="input-text" value="{{ state }}"
+                        placeholder="Enter your state" required>
+                </div><br>
+
+                <div>
+                    <label for="pincode"><strong>Pincode <b>*</b></strong></label><br>
+                    <input type="text" name="pincode" id="pincode" class="input-text" value="{{ pincode }}"
+                        pattern="[0-9]{6}" placeholder="Enter your pincode" required>
+                </div><br>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

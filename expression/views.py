@@ -36,26 +36,24 @@ def signup(request):
         
         fname = request.POST['fname']
         lname = request.POST['lname']
-        utype = request.POST['utype']
         dob = request.POST['dob']
+        group = request.POST['group']
         phone = request.POST['phone']
         email = request.POST['email']
-        #street = request.POST['address']
-        #city = request.POST['city']
-        #state = request.POST['state']
-        #country = request.POST['country']
-        #pincode = request.POST['pincode'] 
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        pincode = request.POST['pincode'] 
         user_name = request.POST['username']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
-        if User.objects.filter(user_name=user_name):
-            messages.error(
-                request, "User name already exists! Please try some other username")
-            return redirect('signin')
-
         if User.objects.filter(email=email):
             messages.error(request, "Email already registered!")
+            return redirect('signin')
+
+        if User.objects.filter(user_name=user_name):
+            messages.error(request, "User name already exists! Please try some other username")
             return redirect('signin')
 
         if len(user_name) > 15:
@@ -73,14 +71,14 @@ def signup(request):
         myuser = User.objects.create_user(email, user_name, pass1)
         myuser.first_name = fname
         myuser.last_name = lname
-        myuser.is_doctor = True if utype == 'Doctor' else False
         myuser.dob = dob
+        myuser.group = group
         myuser.phone = phone
-        #myuser.street = street
-        #myuser.city = city
-        #myuser.state = state
-        #myuser.country = country
-        #myuser.pincode = pincode
+        myuser.address = address
+        myuser.city = city
+        myuser.state = state
+        myuser.pincode = pincode
+        myuser.is_doctor = False
         myuser.is_active = False
 
         myuser.save()
@@ -221,9 +219,96 @@ def dashboard(request):
 
 def profile(request):
     user = User.objects.get(user_name = request.user.user_name)
-    context = {'user_name':user.user_name, 'fname':user.first_name, 'lname':user.last_name, 
-                'age':calcAge(user.dob), 'phone':user.phone, 'email':user.email}
+    context = {'uname':user.user_name, 'name':user.first_name+" "+user.last_name, 'age':calcAge(user.dob),
+                'group':user.group, 'address':user.address, 'city':user.city, 'state':user.state,
+                'pincode':user.pincode, 'phone':user.phone, 'email':user.email}
     return render(request, 'expression/profile.html', context)
+
+def update(request):
+    user = User.objects.get(user_name = request.user.user_name)
+    context = {'uname':user.user_name, 'fname':user.first_name, 'lname': user.last_name, 'dob':user.dob,
+                'group':user.group, 'address':user.address, 'city':user.city, 'state':user.state,
+                'pincode':user.pincode, 'phone':user.phone, 'email':user.email}
+    
+    if request.method == "POST":
+        
+        flag = 1
+
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        dob = request.POST['dob']
+        group = request.POST['group']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        pincode = request.POST['pincode'] 
+        user_name = request.POST['username']
+
+        if email != user.email:
+            if User.objects.filter(email=email):
+                messages.error(request, "Email already registered!")
+                return redirect('signin')
+            
+            user.email = email
+            flag = 0
+        
+        if user_name != user.user_name:
+            if User.objects.filter(user_name=user_name):
+                messages.error(request, "User name already exists! Please try some other username")
+                return redirect('update')
+
+            if len(user_name) > 15:
+                messages.error(request, "Username must be under 15 characters!")
+                return redirect('update')
+
+            if not user_name.isalnum():
+                messages.error(request, "Username must be alpha numeric")
+                return redirect('update')
+
+            user.user_name = user_name
+            flag = 0
+            
+        if fname != user.first_name:
+            user.first_name = fname
+            flag = 0
+        if lname != user.last_name:
+            user.last_name = lname
+            flag = 0
+        if str(dob) != str(user.dob):
+            user.dob = dob
+            flag = 0
+        if group != user.group:
+            user.fname = fname
+            flag = 0
+        if phone != user.phone:
+            user.fname = fname
+            flag = 0
+        if address != user.address:
+            user.address = address
+            flag = 0
+        if city != user.city:
+            user.city = city
+            flag = 0
+        if state != user.state:
+            user.state = state
+            flag = 0
+        if pincode != user.pincode:
+            user.pincode = pincode
+            flag = 0
+
+        if flag == 0:
+            user.save()
+            login(request, user)
+            messages.success(request, "Your profile has updated successfully!!")
+        else:
+            messages.info(request, "Same details stored as no change detected!")
+        
+        time.sleep(1)
+        return redirect('profile')
+    
+    return render(request, 'expression/update.html', context)
 
 def reset(request):
     if request.method == "POST":
@@ -239,18 +324,15 @@ def reset(request):
                 login(request, user)
 
                 messages.success(request, "Reseted the password successfully!")
-                time.sleep(2)
+                time.sleep(1)
 
-                context = {'user_name':user.user_name, 'fname':user.first_name, 'lname':user.last_name, 
-                'age':calcAge(user.dob), 'phone':user.phone, 'email':user.email}
-
-                return render(request,'expression/profile.html', context)
+                return redirect('profile')
             else:
                 messages.error(request, "Passwords didn't match!")
-                time.sleep(2)
+                time.sleep(1)
         else:
             messages.error(request, "Enter the current password correctly!")
-            time.sleep(2)
+            time.sleep(1)
         
         return render(request,'expression/resetpassword.html')
     
