@@ -351,11 +351,14 @@ def report(request):
                 'age':calcAge(user.dob), 'phone':user.phone, 'email':user.email}
     return render(request, 'expression/report.html', context)
 
+def photo(request):
+    return render(request, 'expression/photo.html')
+
 def calcAge(dob):
     today = date.today()
     try:
         birth = dob.replace(year=today.year)
-    except ValueError: # raised when birth date is Feb 29 & current year is not lep year
+    except ValueError: # raised when birth date is Feb 29 & current year is not leap year
         birth = dob.replace(year=today.year, month=dob.month+1, day=1)
     if birth > today:
         return today.year - dob.year - 1

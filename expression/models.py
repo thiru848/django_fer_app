@@ -34,6 +34,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=10)
     otp = models.IntegerField(null=True, blank=True)
     dob = models.DateField(null=True, blank=True)
+    gender = models.CharField(max_length=6)
+    profile = models.ImageField(upload_to="user/profile/", storage=OverWriteStorage())
     group = models.CharField(max_length=5)
     address = models.CharField(max_length=150)
     city = models.CharField(max_length=25)
@@ -50,8 +52,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.user_name
 
+    def delete(self, *args, **kwargs):
+        s1, p1 = self.profile.storage, self.profile.path
+        super(CustomUser, self).delete(*args, **kwargs)
+        s1.delete(p1)
+    
+    def save(self, *args, **kwargs):
+        try:
+            this = CustomUser.objects.get(id=self.id)
+            if this.profile != self.profile and self.profile is not None:
+                this.profile.delete(save=False)
+        except: pass
+        super(CustomUser, self).save(*args, **kwargs)
+
+
 class Song(models.Model):
-    #audio_id = models.AutoField(primary_key=True, default=NullBooleanField)
     title= models.TextField()
     artist= models.TextField()
     image= models.ImageField(upload_to="img/", storage=OverWriteStorage())

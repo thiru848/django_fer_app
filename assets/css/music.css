@@ -55,6 +55,10 @@ h3 {
     height: 66%;
 }
 
+.fc-media {
+    width: 100%;
+}
+
 .cover img {
     display: block;
     position: absolute;
@@ -68,6 +72,7 @@ h3 {
 .titre {
     float: left;
     width: 100%;
+    margin-top: -30%;
 }
 
 .lecteur {
@@ -76,6 +81,7 @@ h3 {
     height: auto;
     position: relative;
     float: left;
+    bottom: -4%;
 }
 
 .mejs__button>button:focus {

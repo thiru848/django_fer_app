@@ -19,4 +19,5 @@ urlpatterns = [
     path('music', views.music, name='music'),
     path('report', views.report, name='report'),
     path('update', views.update, name='update'),
+    path('photo', views.photo, name='photo'),
 ]
