@@ -3,17 +3,18 @@
 <html lang="en">
 
 <head>
-    <title>My Profile</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload Photo</title>
+    <script src="{% static 'js/webcam.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
-    <link rel='stylesheet' type='text/css' href="{% static 'css/photo.css' %}">
-    <script src="{% static 'js/webcam.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/photo.css' %}">
     <script type="text/javascript">
         $(".alert").fadeTo(2000, 500).slideUp(500, function () {
             $(".alert").slideUp(1500);
@@ -28,34 +29,133 @@
 </head>
 
 <body>
-    <div style="font-size: 14px; line-height: 1.42857143; font-family: Arial;">
-        {% include 'expression/includes/messages.html' %}
+    {% include 'expression/includes/messages.html' %}
 
-        {% block content %}
+    {% block content %}
 
-        {% endblock %}
+    {% endblock %}
+
+    <div style="margin-top:-4%;">
+        <section class="left" id="left" style="display: none;">
+            <div id="my_camera"></div>
+            <button onclick="take_snapshot()" id="custom-btn">Take Photo</button>
+            <script language="JavaScript">
+                Webcam.set({
+                    width: 430,
+                    height: 350,
+                    image_format: 'jpeg',
+                    jpeg_quality: 90
+                });
+                function setup() {
+                    Webcam.reset();
+                    Webcam.attach('#my_camera');
+                }
+                function unsetup() {
+                    Webcam.reset();
+                }
+                function take_snapshot() {
+                    // take snapshot and get image data
+                    Webcam.snap(function (data_uri) {
+                        // display results in page
+                        document.getElementById('my_profile').src = data_uri;
+                        wrapper.classList.add("active");
+                        cancelBtn.addEventListener("click", function () {
+                            document.getElementById('my_profile').src = "";
+                            wrapper.classList.remove("active");
+                        })
+                        this.value = "profile.jpg";
+                        if (this.value) {
+                            let valueStore = this.value.match(regExp);
+                            fileName.textContent = valueStore;
+                        }
+                    });
+                }
+            </script>
+        </section>
+        <section class="right" id="right" style="margin-left:0%;">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="image">
+                        <img id="my_profile" name="my_profile" src="" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="text">
+                            No file chosen, yet!
+                        </div>
+                    </div>
+                    <div id="cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="file-name">
+                        File name here
+                    </div>
+                </div>
+                <button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+                <button onclick="Change()" id="custom-btn">Toggle Camera</button>
+                <form id="myAwesomeForm" action="/upload" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input onclick="this.value=null" id="default-btn" name="default-btn" type="file"
+                        style="visibility: hidden; position: absolute;">
+                    <input onclick="this.value=null" type="file" id="uploading" name="uploading"
+                        style="visibility: hidden; position: absolute;">
+                    <button type="submit" id="upload">Upload</button>
+                </form>
+                <br><br>
+            </div>
+
+            <script>
+                const wrapper = document.querySelector(".wrapper");
+                const fileName = document.querySelector(".file-name");
+                const defaultBtn = document.querySelector("#default-btn");
+                const customBtn = document.querySelector("#custom-btn");
+                const cancelBtn = document.querySelector("#cancel-btn i");
+                const img = document.querySelector("img");
+                let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+
+                function Change() {
+                    var cam = document.getElementById('left');
+                    var up = document.getElementById('right');
+                    var setting = cam.style.display;
+
+                    if (setting == 'none') {
+                        cam.style.display = "block";
+                        up.style.marginLeft = "300px";
+                        setup();
+                    } else {
+                        cam.style.display = "none";
+                        up.style.marginLeft = "0%";
+                        unsetup();
+                    }
+                }
+
+                function defaultBtnActive() {
+                    defaultBtn.click();
+                }
+                defaultBtn.addEventListener("change", function () {
+                    const file = this.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function () {
+                            document.getElementById('my_profile').src = reader.result;
+                            wrapper.classList.add("active");
+                        }
+                        cancelBtn.addEventListener("click", function () {
+                            document.getElementById('my_profile').src = "";
+                            wrapper.classList.remove("active");
+                        })
+                        reader.readAsDataURL(file);
+                    }
+                    if (this.value) {
+                        let valueStore = this.value.match(regExp);
+                        fileName.textContent = valueStore;
+                    }
+                });
+            </script>
+        </section>
     </div>
-
-
-    <div id="profile_img"></div>
-    <button onclick='location.href="/upload"'>Upload</button>
-    <button onclick='location.href="/capture"' style="margin-left:8%">Capture</button>
-    <script language="JavaScript">
-        Webcam.set({
-            width: 480,
-            height: 360,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
-
-        Webcam.attach('#profile_img');
-
-        function take_snapshot() {
-            // take snapshot and get image data
-
-        }
-    </script>
-
-    </div>
+</body>
 
 </html>

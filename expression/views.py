@@ -221,7 +221,7 @@ def profile(request):
     user = User.objects.get(user_name = request.user.user_name)
     context = {'uname':user.user_name, 'name':user.first_name+" "+user.last_name, 'age':calcAge(user.dob),
                 'group':user.group, 'address':user.address, 'city':user.city, 'state':user.state,
-                'pincode':user.pincode, 'phone':user.phone, 'email':user.email}
+                'pincode':user.pincode, 'phone':user.phone, 'email':user.email, 'profile':user.profile}
     return render(request, 'expression/profile.html', context)
 
 def update(request):
@@ -353,6 +353,23 @@ def report(request):
 
 def photo(request):
     return render(request, 'expression/photo.html')
+
+def upload(request):
+    if request.method == 'POST':
+        user = User.objects.get(user_name = request.user.user_name)
+        photo = request.FILES.get('default-btn')
+        if photo is None:
+            messages.error(request, "Need a picture to upload!!")
+            time.sleep(1)
+            return redirect('photo')
+        else:
+            user.profile = photo
+            user.save()
+            login(request,user)
+            messages.success(request, "Uploaded Successfully!")
+            time.sleep(1)
+            return redirect('profile')
+    #return redirect('photo')
 
 def calcAge(dob):
     today = date.today()

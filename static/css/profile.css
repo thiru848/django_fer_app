@@ -52,6 +52,10 @@ h2 small {
     font-size: 0.5em;
 }
 
+#capture {
+    margin-left: 4%;
+}
+
 .responsive-table li {
     border-radius: 3px;
     padding: 25px 30px;
@@ -125,8 +129,8 @@ body {
 }
 
 .student-profile .card .card-header .profile_img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     margin: 10px auto;
     border: 10px solid #ccc;

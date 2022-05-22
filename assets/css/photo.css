@@ -13,16 +13,6 @@ body {
     height: 100%;
     place-items: center;
     text-align: center;
-    min-height: 45vh;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-    margin-left: 300px;
 }
 
 .container {
@@ -107,12 +97,7 @@ body {
     display: block;
 }
 
-button:active {
-    transform: scale(0.95);
-}
-
-#custom-btn,
-#upload {
+.container #custom-btn {
     margin-top: 30px;
     display: block;
     width: 100%;

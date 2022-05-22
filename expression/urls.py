@@ -20,4 +20,5 @@ urlpatterns = [
     path('report', views.report, name='report'),
     path('update', views.update, name='update'),
     path('photo', views.photo, name='photo'),
+    path('upload', views.upload, name='upload'),
 ]

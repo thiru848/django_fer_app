@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <link rel='stylesheet' type='text/css' href="{% static 'css/demo.css' %}">
     <link rel='stylesheet' type='text/css' href="{% static 'css/profile.css' %}">
-    <script src="{% static 'js/webcam.min.js' %}"></script>
     <script type="text/javascript">
         $(".alert").fadeTo(2000, 500).slideUp(500, function () {
             $(".alert").slideUp(1500);
@@ -56,12 +55,8 @@
                 <div class="col-lg-4">
                     <div class="card shadow-sm">
                         <div class="card-header bg-transparent text-center">
-                            <img class="profile_img" src="https://source.unsplash.com/600x300/?student"
-                                alt="student dp">
-                            <h3>Ashirvad Hospital</h3>
-                            <p class="mb-0"><strong class="pr-1">Address:</strong>4-120/A, North Bypass Road, NH-5,
-                                Mukthinuthalapadu (V), Ongole - 523001, Andhra Pradesh, India</p>
-                            <!--<button onclick='location.href="/photo"'>Capture Photo</button><br><br>-->
+                            <img class="profile_img" src="media/{{ profile }}" alt="Profile">
+                            <button id="capture" onclick='location.href="/photo"'>Capture Photo</button><br><br>
                         </div>
                     </div>
                 </div>
